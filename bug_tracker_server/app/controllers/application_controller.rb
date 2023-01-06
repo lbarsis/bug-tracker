@@ -1,7 +1,7 @@
 class ApplicationController < Sinatra::Base
   set :default_content_type, 'application/json'
   
-  # Add your routes here
+  # Get base Routes
   # Get all Projects
   get '/projects' do
     projects = Project.all
@@ -19,6 +19,4 @@ class ApplicationController < Sinatra::Base
     users = User.all
     users.to_json
   end
-
-  
 end
