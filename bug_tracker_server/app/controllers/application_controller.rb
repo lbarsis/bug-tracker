@@ -1,6 +1,10 @@
 class ApplicationController < Sinatra::Base
   set :default_content_type, 'application/json'
 
+  get '/' do 
+    "hello world"
+  end
+
   # Get all Projects
   get '/projects' do
     projects = Project.all
@@ -19,9 +23,15 @@ class ApplicationController < Sinatra::Base
     users.to_json
   end
 
-  get '/projects/22' do
-    tickets = Project.find(params[:22])
+  # Get Tickets from Project
+  get '/projects/:id/tickets' do
+    tickets = Project.find(params[:id]).tickets
     tickets.to_json
   end
 
+    # Get Tickets from User
+    get '/users/:id/tickets' do
+      tickets = User.find(params[:id]).tickets
+      tickets.to_json
+    end
 end
