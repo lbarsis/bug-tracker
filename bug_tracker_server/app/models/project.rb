@@ -1,6 +1,6 @@
 class Project < ActiveRecord::Base
   has_many :tickets
-  belongs_to :user
+  has_many :users, through: :tickets
 
   # #Counts how many tickets are in each project
   # def self.count_tickets(id)

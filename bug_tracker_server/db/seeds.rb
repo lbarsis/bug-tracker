@@ -16,8 +16,7 @@ end
   Project.create(
     name: Faker::App.name,
     description: Faker::Movie.quote,
-    status: Faker::Subscription.status,
-    user_id: rand(User.all.first.id..User.all.last.id)
+    status: Faker::Subscription.status
   )
 
   rand(1..5).times do
