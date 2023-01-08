@@ -8,19 +8,29 @@ class ApplicationController < Sinatra::Base
   # Get all Projects
   get '/projects' do
     projects = Project.all
-    projects.to_json
+    projects.to_json(
+      include: {
+        tickets: {
+          include: {
+            user: { 
+              only: [:first_name]
+            }
+          }
+        }
+      }
+    )
   end
 
   # Get all Tickets
   get '/tickets' do
     tickets = Ticket.all
-    tickets.to_json
+    tickets.to_json(include: :user)
   end
 
-  # Get all Users
+  # Get all Users and tickets and projects
   get '/users' do
     users = User.all
-    users.to_json
+    users.to_json(include: {tickets: { include: :project }})
   end
 
   # Get Tickets from Project
