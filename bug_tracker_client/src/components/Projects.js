@@ -12,7 +12,7 @@ function Projects() {
 
   const projectRow = projects.map(project => {
     return (
-      <ProjectRow project={project} key={project.id} />
+      <ProjectRow project={project} key={project.id} className='project-row'/>
     )
   })
 
