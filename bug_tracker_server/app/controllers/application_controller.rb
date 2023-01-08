@@ -29,9 +29,15 @@ class ApplicationController < Sinatra::Base
     tickets.to_json
   end
 
-    # Get Tickets from User
-    get '/users/:id/tickets' do
-      tickets = User.find(params[:id]).tickets
-      tickets.to_json
-    end
+  # Get Tickets from User
+  get '/users/:id/tickets' do
+    tickets = User.find(params[:id]).tickets
+    tickets.to_json
+  end
+
+  # Get Projects from User
+  get '/users/:id/projects' do
+    tickets = User.find(params[:id]).tickets
+    tickets.to_json
+  end
 end
