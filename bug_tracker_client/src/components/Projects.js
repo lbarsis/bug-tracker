@@ -10,10 +10,7 @@ function Projects() {
       .then(projects => setProjects(projects))
   }, []);
 
-  const data = useMemo(
-    () => projects,
-    []
-  )
+  const data = useMemo(() => projects, [projects])
 
   const columns = useMemo(
     () => [
@@ -28,7 +25,19 @@ function Projects() {
       {
         Header: 'Status',
         accessor: 'status',
-      }
+      },
+      {
+        Header: 'user',
+        accessor: 'tickets[0].user.first_name',
+       },
+      {
+        Header: 'Open Tickets',
+        accessor: 'tickets.length',
+      },
+      // {
+      //   Header: 'Status',
+      //   accessor: 'status',
+      // }
     ],
     []
   )
