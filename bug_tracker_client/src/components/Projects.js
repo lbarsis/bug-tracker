@@ -12,18 +12,20 @@ function Projects() {
 
   const projectRow = projects.map(project => {
     return (
-      <ProjectRow project={project} key={project.id} className='project-row'/>
+      <ProjectRow project={project} key={project.id} className='project-row' />
     )
   })
 
   return (
     <table className='project-table'>
       <thead>
-        <tr><th>Name</th>
+        <tr>
+          <th>Name</th>
           <th>Description</th>
           <th>Status</th>
           <th>Open Tickets</th>
-          <th>Created At</th></tr>
+          <th>Created At</th>
+        </tr>
       </thead>
       <tbody>
         {projectRow}
