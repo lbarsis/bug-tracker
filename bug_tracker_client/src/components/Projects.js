@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import AddProject from './AddProject';
 import ProjectRow from './ProjectRow';
 
 function Projects() {
@@ -16,21 +17,29 @@ function Projects() {
     )
   })
 
+  function openForm() {
+    document.getElementById("newProject").style.display = "block";
+  }
+
   return (
-    <table className='project-table'>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Description</th>
-          <th>Status</th>
-          <th>Open Tickets</th>
-          <th>Created At</th>
-        </tr>
-      </thead>
-      <tbody>
-        {projectRow}
-      </tbody>
-    </table>
+    <>
+      <button className="open-button" onClick={openForm}>Open Form</button>
+      <AddProject />
+      <table className='project-table'>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th>Open Tickets</th>
+            <th>Created At</th>
+          </tr>
+        </thead>
+        <tbody>
+          {projectRow}
+        </tbody>
+      </table>
+    </>
   )
 }
 

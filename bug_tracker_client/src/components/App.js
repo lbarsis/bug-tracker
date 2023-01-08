@@ -3,6 +3,7 @@ import {Routes, Route} from "react-router-dom"
 import Navbar from './Navbar';
 import Home from './Home';
 import Projects from './Projects';
+import AddProject from './AddProject';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/projects' element={<Projects />} />
+        <Route path='/new-project' element={<AddProject />} />
       </Routes>
     </div>
   );

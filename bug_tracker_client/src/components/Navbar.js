@@ -6,6 +6,7 @@ function Navbar() {
     <div className='topnav'>
       <NavLink to='/'>Home</NavLink>
       <NavLink to='/projects'>Projects</NavLink>
+      <NavLink to='/new-project'>Add Project</NavLink>
       <input type="text" placeholder="Search.." />
     </div>
   );

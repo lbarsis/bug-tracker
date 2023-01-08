@@ -5,7 +5,7 @@ class ApplicationController < Sinatra::Base
     "hello world"
   end
 
-  # Get all Projects
+  # Get all Projects and sub data
   get '/projects' do
     projects = Project.all
     projects.to_json(
@@ -15,6 +15,15 @@ class ApplicationController < Sinatra::Base
         }
       }
     )
+  end
+
+  post '/projects' do 
+    project = Project.create(
+      name: params[:name],
+      description: params[:description],
+      status: params[:status]
+    )
+    project.to_json
   end
 
   # Get all Tickets
