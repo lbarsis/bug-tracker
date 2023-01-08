@@ -21,10 +21,10 @@ function Projects() {
   // })
 
   return (
-    <table>
+    <table className='project-table'>
       <thead>
         <tr><th>Name</th>
-          <th>Description</th>
+          <th className='project-description'>Description</th>
           <th>Status</th>
           <th>Open Tickets</th>
           <th>Created At</th></tr>

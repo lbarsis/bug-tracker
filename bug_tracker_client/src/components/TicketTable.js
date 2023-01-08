@@ -8,7 +8,7 @@ function TicketTable({ ticket }) {
         <tr >
           <td>{title}</td>
           <td>{priority}</td>
-          <td>{description}</td>
+          <td className='ticket-description'>{description}</td>
           <td>{status}</td>
           <td>{hours}</td>
           <td>{user.first_name}</td>

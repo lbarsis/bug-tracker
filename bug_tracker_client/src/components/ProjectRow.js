@@ -18,7 +18,7 @@ function ProjectRow({ project }) {
     <>
       <tr key={id} className='project-row'>
         <td>{name}</td>
-        <td>{description}</td>
+        <td className='project-description'>{description}</td>
         <td>{status}</td>
         <td onClick={onDisplayTickets}>{tickets.length}</td>
         <td>{created_at}</td>
@@ -33,7 +33,7 @@ function ProjectRow({ project }) {
                 <tr>
                   <th>Title</th>
                   <th>Priority</th>
-                  <th>Description</th>
+                  <th className='ticket-description'>Description</th>
                   <th>Status</th>
                   <th>Hours</th>
                   <th>User</th>

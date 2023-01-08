@@ -3,10 +3,22 @@ td, th {
   text-align: center;
 }
 
+.project-description {
+  text-align: left;
+}
+
+.project-table {
+  width: 96%;
+  margin: 25px 25px 25px 50px;
+}
+
 .ticket-table {
-  width: fit-content;
+  width: 97%;
   margin-left: 50px;
-  /* display: none; */
+}
+
+.ticket-description {
+  text-align: left;
 }
 
 
