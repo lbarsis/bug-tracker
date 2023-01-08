@@ -16,15 +16,11 @@ function Projects() {
     )
   })
 
-  // const tickets = projects.map(project => {
-  //   return <Tickets key={project.id} ticket={project.tickets} />
-  // })
-
   return (
     <table className='project-table'>
       <thead>
         <tr><th>Name</th>
-          <th className='project-description'>Description</th>
+          <th>Description</th>
           <th>Status</th>
           <th>Open Tickets</th>
           <th>Created At</th></tr>
@@ -33,60 +29,6 @@ function Projects() {
         {projectRow}
       </tbody>
     </table>
-
-
-    // // apply the table props
-    // <table {...getTableProps()}>
-
-    //   {/* ------------- HEADER ---------- */}
-
-    //   <thead>
-    //     {// Loop over the header rows
-    //       headerGroups.map(headerGroup => (
-    //         // Apply the header row props
-    //         <tr {...headerGroup.getHeaderGroupProps()}>
-    //           {// Loop over the headers in each row
-    //             headerGroup.headers.map(column => (
-    //               // Apply the header cell props
-    //               <th {...column.getHeaderProps()}>
-    //                 {// Render the header
-    //                   column.render('Header')}
-    //               </th>
-    //             ))}
-    //         </tr>
-    //       ))}
-    //   </thead>
-
-    //   {/* -------------- BODY ------------- */}
-
-    //   {/* Apply the table body props */}
-    //   <tbody {...getTableBodyProps()}>
-    //     {// Loop over the table rows
-    //       rows.map(row => {
-    //         // Prepare the row for display
-    //         prepareRow(row)
-    //         return (
-
-    //           // Apply the row props
-    //           <>
-    //             <tr {...row.getRowProps()}>
-    //               {// Loop over the rows cells
-    //                 row.cells.map(cell => {
-    //                   // Apply the cell props
-    //                   return (
-    //                     <td {...cell.getCellProps()}>
-    //                       {// Render the cell contents
-    //                         cell.render('Cell')}
-    //                     </td>
-    //                   )
-    //                 })}
-    //             </tr>
-
-    //           </>
-    //         )
-    //       })}
-    //   </tbody>
-    // </table>
   )
 }
 

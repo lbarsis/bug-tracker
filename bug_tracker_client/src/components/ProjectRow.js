@@ -16,9 +16,9 @@ function ProjectRow({ project }) {
 
   return (
     <>
-      <tr key={id} className='project-row'>
+      <tr key={id}>
         <td>{name}</td>
-        <td className='project-description'>{description}</td>
+        <td>{description}</td>
         <td>{status}</td>
         <td onClick={onDisplayTickets}>{tickets.length}</td>
         <td>{created_at}</td>
@@ -28,12 +28,12 @@ function ProjectRow({ project }) {
         {/* determines if ticket table should be displayed based on state */}
         {showTickets ?
           <td colSpan="5">
-            <table className='ticket-table'>
+            <table className='project-table'>
               <thead>
                 <tr>
                   <th>Title</th>
                   <th>Priority</th>
-                  <th className='ticket-description'>Description</th>
+                  <th >Description</th>
                   <th>Status</th>
                   <th>Hours</th>
                   <th>User</th>

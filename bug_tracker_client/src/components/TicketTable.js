@@ -1,20 +1,34 @@
-import React from 'react';
+import React, {useState} from 'react';
+import UserCard from './UserCard';
 
 function TicketTable({ ticket }) {
   const { title, priority, description, status, hours, user, created_at } = ticket
+  const [displayUser, setDisplayUser] = useState(false)
+
+  function onDisplayUser() {
+    setDisplayUser(displayUser => !displayUser)
+  }
 
   return (
-      <tbody className='ticket-row'>
-        <tr >
-          <td>{title}</td>
-          <td>{priority}</td>
-          <td className='ticket-description'>{description}</td>
-          <td>{status}</td>
-          <td>{hours}</td>
-          <td>{user.first_name}</td>
-          <td>{created_at}</td>
-        </tr>
-      </tbody>
+    <tbody>
+      <tr >
+        <td>{title}</td>
+        <td>{priority}</td>
+        <td className='ticket-description'>{description}</td>
+        <td>{status}</td>
+        <td>{hours}</td>
+        <td onClick={onDisplayUser}>{user.first_name}</td>
+        <td>{created_at}</td>
+      </tr>
+      {displayUser ? <tr>
+        <td colSpan='7'>
+          <UserCard user={user} />
+        </td>
+      </tr>
+      :
+      null}
+      
+    </tbody>
   )
 }
 

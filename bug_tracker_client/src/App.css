@@ -1,24 +1,43 @@
-td, th {
-  border-bottom: 1px solid #ddd;
-  text-align: center;
-}
-
-.project-description {
-  text-align: left;
-}
-
 .project-table {
-  width: 96%;
-  margin: 25px 25px 25px 50px;
+  border-collapse: collapse;
+  margin: 25px 50px;
+  font-size: 0.9em;
+  font-family: sans-serif;
+  min-width: 400px;
+  width: 95%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
-.ticket-table {
-  width: 97%;
-  margin-left: 50px;
-}
-
-.ticket-description {
+.project-table thead tr {
+  background-color: #009879;
+  color: #ffffff;
   text-align: left;
 }
 
+.project-table tr:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  
+  padding: 2px 16px;
+}
 
+.project-table th,
+.project-table td {
+    padding: 12px 15px;
+}
+
+.styled-table tbody tr.active-row {
+  font-weight: bold;
+  color: #009879;
+}
+
+.card {
+  /* Add shadows to create the "card" effect */
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+}
+
+/* Add some padding inside the card container */
+.container {
+  padding: 2px 16px;
+}
