@@ -66,8 +66,8 @@
 
 /* Style the "active" element to highlight the current page */
 .topnav a.active {
-  background-color: #2196F3;
-  color: white;
+  background-color: #ddd;
+  color: darkgray;
 }
 
 /* Style the search box inside the navigation bar */
@@ -83,14 +83,17 @@
 /* Button used to open the contact form - fixed at the bottom of the page */
 .open-button {
   background-color: #555;
+  display: block;
+  position: relative;
   color: white;
-  padding: 16px 20px;
+  padding: 16px 10px;
   border: none;
   cursor: pointer;
   opacity: 0.8;
   bottom: 23px;
-  right: 28px;
-  width: 280px;
+  top: 5px;
+  left: 90%;
+  width: 140px;
 }
 
 /* The popup form - hidden by default */
@@ -121,11 +124,6 @@
 /* Full-width input fields */
 .form-container select {
   width: 95%;
-}
-
-.new-project-description {
-  position: relative;
-  top: 0;
 }
 
 /* When the inputs get focus, do something */

@@ -22,6 +22,7 @@ function ProjectRow({ project }) {
         <td>{status}</td>
         <td onClick={onDisplayTickets}>{tickets.length}</td>
         <td>{created_at}</td>
+        <td><button>Delete</button></td>
       </tr>
       {/* ---- tickets section ---- */}
       <tr>

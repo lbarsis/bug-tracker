@@ -22,8 +22,7 @@ function Projects() {
   }
 
   return (
-    <>
-      <button className="open-button" onClick={openForm}>Open Form</button>
+    <div>
       <AddProject />
       <table className='project-table'>
         <thead>
@@ -33,13 +32,15 @@ function Projects() {
             <th>Status</th>
             <th>Open Tickets</th>
             <th>Created At</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
           {projectRow}
         </tbody>
       </table>
-    </>
+      <button className="open-button" onClick={openForm}>New Project</button>
+    </div>
   )
 }
 
