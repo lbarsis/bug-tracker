@@ -66,4 +66,11 @@ class ApplicationController < Sinatra::Base
     project.to_json
   end
 
+  # delete requests
+
+  delete '/projects/:id' do 
+    project = Project.find(params[:id])
+    project.destroy
+  end
+
 end
