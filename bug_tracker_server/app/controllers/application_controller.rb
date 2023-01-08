@@ -11,11 +11,7 @@ class ApplicationController < Sinatra::Base
     projects.to_json(
       include: {
         tickets: {
-          include: {
-            user: { 
-              only: [:first_name]
-            }
-          }
+          include: :user
         }
       }
     )
