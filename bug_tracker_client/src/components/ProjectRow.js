@@ -5,7 +5,8 @@ function ProjectRow({ project, onDeleteProject }) {
   const { id, name, description, status, created_at, tickets } = project
   const [showTickets, setShowTickets] = useState(false)
 
-  const displayTickets = tickets.map(ticket => {
+  // question mark after tickets determines if tickets exist then map it
+  const displayTickets = tickets?.map(ticket => {
     return <TicketTable key={ticket.id} ticket={ticket} />
   })
 
@@ -28,7 +29,7 @@ function ProjectRow({ project, onDeleteProject }) {
         <td>{name}</td>
         <td>{description}</td>
         <td>{status}</td>
-        <td onClick={onDisplayTickets}>{tickets.length}</td>
+        <td onClick={onDisplayTickets}>{tickets?.length}</td>
         <td>{created_at}</td>
         <td><button onClick={handleDeleteClick}>Delete</button></td>
       </tr>

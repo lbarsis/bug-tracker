@@ -4,7 +4,6 @@ import {Routes, Route} from "react-router-dom"
 import Navbar from './Navbar';
 import Home from './Home';
 import Projects from './Projects';
-import ProjectForm from './ProjectForm';
 
 function App() {
   const [projects, setProjects] = useState([])
@@ -29,7 +28,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/projects' element={<Projects projects={projects} onAddProject={handleAddProject} onDeleteProject={handleDeleteProject} />} />
+        <Route path='/projects' element={<Projects projects={projects} setProjects={setProjects} onAddProject={handleAddProject} onDeleteProject={handleDeleteProject} />} />
       </Routes>
     </div>
   );

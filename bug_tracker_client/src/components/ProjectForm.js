@@ -33,9 +33,15 @@ function ProjectForm({ onAddProject }) {
       })
     })
       .then(r => r.json())
-      .then(newProject => {
-        onAddProject(newProject)
+      .then(newProject => onAddProject(newProject))
+
+      setFormData({
+        name: '',
+        description: '',
+        status: 'New'
       })
+
+      closeForm()
   }
 
 
