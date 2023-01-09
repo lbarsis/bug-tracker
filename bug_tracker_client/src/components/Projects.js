@@ -1,20 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import AddProject from './AddProject';
+import React from 'react';
+import ProjectForm from './ProjectForm';
 import ProjectRow from './ProjectRow';
 
-function Projects() {
-  const [projects, setProjects] = useState([])
-
-  useEffect(() => {
-    fetch('http://localhost:9292/projects')
-      .then(r => r.json())
-      .then(projects => setProjects(projects))
-  }, []);
+function Projects({projects, onAddProject, onDeleteProject}) {
 
   const projectRow = projects.map(project => {
-    return (
-      <ProjectRow project={project} key={project.id} className='project-row' />
-    )
+    return <ProjectRow project={project} key={project.id} className='project-row' onDeleteProject={onDeleteProject} />
   })
 
   function openForm() {
@@ -23,7 +14,7 @@ function Projects() {
 
   return (
     <div>
-      <AddProject />
+      <ProjectForm onAddProject={onAddProject} />
       <table className='project-table'>
         <thead>
           <tr>

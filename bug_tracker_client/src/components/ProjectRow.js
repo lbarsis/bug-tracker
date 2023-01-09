@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import TicketTable from './TicketTable';
 
-function ProjectRow({ project }) {
+function ProjectRow({ project, onDeleteProject }) {
   const { id, name, description, status, created_at, tickets } = project
   const [showTickets, setShowTickets] = useState(false)
 
@@ -14,6 +14,14 @@ function ProjectRow({ project }) {
     setShowTickets(displayTickets => !displayTickets)
   }
 
+  function handleDeleteClick() {
+    fetch(`http://localhost:9292/projects/${id}`, {
+      method: "DELETE",
+    });
+
+    onDeleteProject(id);
+  }
+
   return (
     <>
       <tr key={id}>
@@ -22,7 +30,7 @@ function ProjectRow({ project }) {
         <td>{status}</td>
         <td onClick={onDisplayTickets}>{tickets.length}</td>
         <td>{created_at}</td>
-        <td><button>Delete</button></td>
+        <td><button onClick={handleDeleteClick}>Delete</button></td>
       </tr>
       {/* ---- tickets section ---- */}
       <tr>

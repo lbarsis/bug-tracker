@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function AddProject() {
+function ProjectForm({ onAddProject }) {
   const [formData, setFormData] = useState({
     name: '',
     description: '',
@@ -11,7 +11,7 @@ function AddProject() {
     document.getElementById("newProject").style.display = "none";
   }
 
-  function onUpdateForm(e) {
+  function handleChange(e) {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
@@ -30,10 +30,12 @@ function AddProject() {
         name: formData.name,
         description: formData.description,
         status: formData.status
-      }),
+      })
     })
-      .then((r) => r.json())
-      .then(newProject => console.log(newProject));
+      .then(r => r.json())
+      .then(newProject => {
+        onAddProject(newProject)
+      })
   }
 
 
@@ -48,12 +50,12 @@ function AddProject() {
           placeholder="Project name..."
           name="name"
           required
-          onChange={onUpdateForm}
+          onChange={handleChange}
           value={formData.name}
         />
 
         <label><b>Status</b></label>
-        <select id="status" name="status" onChange={onUpdateForm}>
+        <select id="status" name="status" onChange={handleChange}>
           <option value="new">New</option>
           <option value="complete">Complete</option>
           <option value="in-progress">In-progress</option>
@@ -68,7 +70,7 @@ function AddProject() {
           name="description"
           style={{ height: "200px" }}
           required
-          onChange={onUpdateForm}
+          onChange={handleChange}
           value={formData.description}
         />
 
@@ -79,4 +81,4 @@ function AddProject() {
   );
 }
 
-export default AddProject;
+export default ProjectForm;
