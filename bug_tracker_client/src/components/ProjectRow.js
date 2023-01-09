@@ -29,9 +29,12 @@ function ProjectRow({ project, onDeleteProject }) {
         <td>{name}</td>
         <td>{description}</td>
         <td>{status}</td>
-        <td onClick={onDisplayTickets}>{tickets?.length}</td>
+        <td onClick={onDisplayTickets}>{tickets? tickets.length : 0}</td>
         <td>{created_at}</td>
-        <td><button onClick={handleDeleteClick}>Delete</button></td>
+        <td>
+          <button>Edit</button>
+          <button onClick={handleDeleteClick}>Delete</button>
+        </td>
       </tr>
       {/* ---- tickets section ---- */}
       <tr>
