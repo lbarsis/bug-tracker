@@ -18,6 +18,17 @@ function App() {
     setProjects([...projects, newProject])
   }
 
+  function handleUpdateProject(updatedProject) {
+    const displayProjects = projects.map(project => {
+      if (project.id === updatedProject.id) {
+        return updatedProject
+      } else {
+        return project
+      }
+    })
+    setProjects(displayProjects)
+  }
+
   function handleDeleteProject(id) {
     const displayProjects = projects.filter((project) => project.id !== id);
     setProjects(displayProjects);
@@ -28,7 +39,14 @@ function App() {
       <Navbar />
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/projects' element={<Projects projects={projects} setProjects={setProjects} onAddProject={handleAddProject} onDeleteProject={handleDeleteProject} />} />
+        <Route path='/projects' 
+        element={<Projects 
+        projects={projects} 
+        setProjects={setProjects} 
+        onAddProject={handleAddProject} 
+        onDeleteProject={handleDeleteProject}
+        onUpdateProject={handleUpdateProject}
+        />} />
       </Routes>
     </div>
   );

@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 
-function EditProjectForm({ project }) {
+function EditProjectForm({ project, setIsEditing, onUpdateProject }) {
 
   const [formData, setFormData] = useState({
     name: project.name,
     description: project.description,
     status: project.status
   })
+
+  console.log(project.tickets)
 
   function handleChange(e) {
     setFormData({
@@ -16,7 +18,7 @@ function EditProjectForm({ project }) {
   }
 
   function closeForm() {
-    document.getElementById("editProjectForm").style.display = "none";
+    setIsEditing(false)
   }
 
   function handleSubmit(e) {
@@ -34,7 +36,7 @@ function EditProjectForm({ project }) {
       })
     })
       .then(r => r.json())
-      .then(updatedProject => console.log(updatedProject))
+      .then(updatedProject => onUpdateProject(updatedProject))
 
       setFormData({
         name: '',

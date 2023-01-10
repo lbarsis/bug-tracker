@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import EditProjectForm from './EditProjectForm';
 import TicketTable from './TicketTable';
 
-function ProjectRow({ project, onDeleteProject }) {
+function ProjectRow({ project, onDeleteProject, onUpdateProject }) {
   const { id, name, description, status, created_at, tickets } = project
   const [showTickets, setShowTickets] = useState(false)
+  const [isEditing, setIsEditing] = useState(false)
 
   // question mark after tickets determines if tickets exist then map it
   const displayTickets = tickets?.map(ticket => {
@@ -25,23 +26,32 @@ function ProjectRow({ project, onDeleteProject }) {
   }
 
   function openEditProjectForm() {
-    document.getElementById("editProjectForm").style.display = "block";
+    setIsEditing(edit => !edit)
   }
 
   return (
     <>
-    <tr key={id}>
+      {
+        isEditing ?
+        <tr style={{"height": "0px"}}>
+          <td>
+            <EditProjectForm project={project} onUpdateProject={onUpdateProject} setIsEditing={setIsEditing}/>
+          </td>
+        </tr>
+          :
+          <tr key={id}>
         <td>{name}</td>
         <td>{description}</td>
         <td>{status}</td>
-        <td onClick={onDisplayTickets}>{tickets? tickets.length : 0}</td>
+        <td onClick={onDisplayTickets}>{tickets ? tickets.length : 0}</td>
         <td>{created_at}</td>
-        <td><EditProjectForm project={project}/></td>
         <td>
           <button onClick={openEditProjectForm}>Edit</button>
           <button onClick={handleDeleteClick}>Delete</button>
         </td>
       </tr>
+      }
+      
       {/* ---- tickets section ---- */}
       <tr>
         {/* determines if ticket table should be displayed based on state */}
