@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import EditProjectForm from './EditProjectForm';
 import TicketTable from './TicketTable';
 
 function ProjectRow({ project, onDeleteProject }) {
@@ -23,16 +24,21 @@ function ProjectRow({ project, onDeleteProject }) {
     onDeleteProject(id);
   }
 
+  function openEditProjectForm() {
+    document.getElementById("editProjectForm").style.display = "block";
+  }
+
   return (
     <>
-      <tr key={id}>
+    <tr key={id}>
         <td>{name}</td>
         <td>{description}</td>
         <td>{status}</td>
         <td onClick={onDisplayTickets}>{tickets? tickets.length : 0}</td>
         <td>{created_at}</td>
+        <td><EditProjectForm project={project}/></td>
         <td>
-          <button>Edit</button>
+          <button onClick={openEditProjectForm}>Edit</button>
           <button onClick={handleDeleteClick}>Delete</button>
         </td>
       </tr>

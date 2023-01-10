@@ -1,5 +1,6 @@
 import React from 'react';
-import ProjectForm from './ProjectForm';
+import AddProjectForm from './AddProjectForm';
+import EditProjectForm from './EditProjectForm';
 import ProjectRow from './ProjectRow';
 
 function Projects({projects, onAddProject, onDeleteProject }) {
@@ -8,13 +9,13 @@ function Projects({projects, onAddProject, onDeleteProject }) {
     return <ProjectRow project={project} key={project.id} className='project-row' onDeleteProject={onDeleteProject} />
   })
 
-  function openForm() {
-    document.getElementById("newProject").style.display = "block";
+  function openAddProjectForm() {
+    document.getElementById("newProjectForm").style.display = "block";
   }
 
   return (
     <div>
-      <ProjectForm onAddProject={onAddProject} />
+      <AddProjectForm onAddProject={onAddProject} />
       <table className='project-table'>
         <thead>
           <tr>
@@ -24,13 +25,14 @@ function Projects({projects, onAddProject, onDeleteProject }) {
             <th>Open Tickets</th>
             <th>Created At</th>
             <th></th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
           {projectRow}
         </tbody>
       </table>
-      <button className="open-button" onClick={openForm}>New Project</button>
+      <button className="open-button" onClick={openAddProjectForm}>New Project</button>
     </div>
   )
 }

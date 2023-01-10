@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function ProjectForm({ onAddProject }) {
+function AddProjectForm({ onAddProject }) {
   const [formData, setFormData] = useState({
     name: '',
     description: '',
@@ -8,7 +8,7 @@ function ProjectForm({ onAddProject }) {
   })
 
   function closeForm() {
-    document.getElementById("newProject").style.display = "none";
+    document.getElementById("newProjectForm").style.display = "none";
   }
 
   function handleChange(e) {
@@ -44,9 +44,8 @@ function ProjectForm({ onAddProject }) {
       closeForm()
   }
 
-
   return (
-    <div className='form-popup' id='newProject'>
+    <div className='form-popup' id='newProjectForm'>
       <form className="form-container" onSubmit={handleSubmit}>
         <h1>New Project</h1>
 
@@ -87,4 +86,4 @@ function ProjectForm({ onAddProject }) {
   );
 }
 
-export default ProjectForm;
+export default AddProjectForm;

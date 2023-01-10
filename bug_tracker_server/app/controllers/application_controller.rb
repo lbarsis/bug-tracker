@@ -18,6 +18,11 @@ class ApplicationController < Sinatra::Base
     )
   end
 
+  get '/projects/:id' do
+    project = Project.find(params[:id])
+    project.to_json
+  end
+
   get '/tickets' do
     tickets = Ticket.all
     tickets.to_json(include: :user)
@@ -58,7 +63,7 @@ class ApplicationController < Sinatra::Base
 
   patch '/projects/:id' do 
     project = Project.find(params[:id])
-    project = Project.update(
+    project.update(
       name: params[:name],
       description: params[:description],
       status: params[:status]
