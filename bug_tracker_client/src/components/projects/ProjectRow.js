@@ -6,7 +6,8 @@ import AddTicketForm from '../tickets/AddTicketForm';
 function ProjectRow({ project, onDeleteProject, onUpdateProject }) {
   const { id, name, description, status, created_at, tickets } = project
   const [showTickets, setShowTickets] = useState(false)
-  const [isEditing, setIsEditing] = useState(false)
+  const [isEditingProject, setIsEditingProject] = useState(false)
+  const [isAddingTicket, setIsAddingTicket] = useState(false)
 
   // question mark after tickets determines if tickets exist then map it
   const displayTickets = tickets?.map(ticket => {
@@ -27,20 +28,22 @@ function ProjectRow({ project, onDeleteProject, onUpdateProject }) {
   }
 
   function openEditProjectForm() {
-    setIsEditing(edit => !edit)
+    setIsEditingProject(edit => !edit)
   }
 
   function openCreateTicketForm() {
-    document.getElementById("createTicketForm").style.display = "block";
+    setIsAddingTicket(true)
   }
+
+  console.log(isAddingTicket)
 
   return (
     <>
       {
-        isEditing ?
+        isEditingProject ?
           <tr style={{ "height": "0px" }}>
             <td>
-              <EditProjectForm project={project} onUpdateProject={onUpdateProject} setIsEditing={setIsEditing} />
+              <EditProjectForm project={project} onUpdateProject={onUpdateProject} setIsEditingProject={setIsEditingProject} />
             </td>
           </tr>
           :
@@ -58,9 +61,14 @@ function ProjectRow({ project, onDeleteProject, onUpdateProject }) {
         </td>
         <td><button onClick={openCreateTicketForm}>Create ticket</button></td>
       </tr>
-      <tr id='createTicketForm' style={{"display": "none"}}>
-        <td><AddTicketForm /></td>
-      </tr>
+      {
+        isAddingTicket ?
+          <tr>
+            <td><AddTicketForm setIsAddingTicket={setIsAddingTicket} /></td>
+          </tr>
+          :
+          null
+      }
       {/* ---- tickets section ---- */}
       <tr>
         {/* determines if ticket table should be displayed based on state */}

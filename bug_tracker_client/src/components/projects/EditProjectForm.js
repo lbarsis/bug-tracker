@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function EditProjectForm({ project, setIsEditing, onUpdateProject }) {
+function EditProjectForm({ project, setIsEditingProject, onUpdateProject }) {
 
   const [formData, setFormData] = useState({
     name: project.name,
@@ -16,7 +16,7 @@ function EditProjectForm({ project, setIsEditing, onUpdateProject }) {
   }
 
   function closeForm() {
-    setIsEditing(false)
+    setIsEditingProject(false)
   }
 
   function handleSubmit(e) {
