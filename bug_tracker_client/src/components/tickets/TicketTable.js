@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import UserCard from './UserCard';
+import UserCard from '../UserCard';
 
 function TicketTable({ ticket }) {
   const { title, priority, description, status, hours, user, created_at } = ticket

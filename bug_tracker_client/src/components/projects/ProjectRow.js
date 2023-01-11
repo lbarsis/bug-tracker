@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import EditProjectForm from './EditProjectForm';
-import TicketTable from '../TicketTable';
+import TicketTable from '../tickets/TicketTable';
 
 function ProjectRow({ project, onDeleteProject, onUpdateProject }) {
   const { id, name, description, status, created_at, tickets } = project
