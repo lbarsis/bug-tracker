@@ -8,8 +8,6 @@ function EditProjectForm({ project, setIsEditing, onUpdateProject }) {
     status: project.status
   })
 
-  console.log(project.tickets)
-
   function handleChange(e) {
     setFormData({
       ...formData,

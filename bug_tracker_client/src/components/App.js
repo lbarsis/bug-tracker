@@ -21,11 +21,16 @@ function App() {
   function handleUpdateProject(updatedProject) {
     const displayProjects = projects.map(project => {
       if (project.id === updatedProject.id) {
-        return updatedProject
+        return {
+          ...updatedProject,
+          tickets: project.tickets
+        }
       } else {
         return project
       }
     })
+    
+    console.log(updatedProject)
     setProjects(displayProjects)
   }
 
