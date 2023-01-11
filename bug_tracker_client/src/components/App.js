@@ -3,7 +3,7 @@ import {useState, useEffect} from 'react'
 import {Routes, Route} from "react-router-dom"
 import Navbar from './Navbar';
 import Home from './Home';
-import Projects from './Projects';
+import Projects from './projects/Projects';
 
 function App() {
   const [projects, setProjects] = useState([])

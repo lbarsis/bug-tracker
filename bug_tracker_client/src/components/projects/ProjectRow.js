@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import EditProjectForm from './EditProjectForm';
-import TicketTable from './TicketTable';
+import TicketTable from '../TicketTable';
 
 function ProjectRow({ project, onDeleteProject, onUpdateProject }) {
   const { id, name, description, status, created_at, tickets } = project
@@ -51,6 +51,7 @@ function ProjectRow({ project, onDeleteProject, onUpdateProject }) {
           <button onClick={openEditProjectForm}>Edit</button>
           <button onClick={handleDeleteClick}>Delete</button>
         </td>
+        <td><button>Create ticket</button></td>
       </tr>
       {/* ---- tickets section ---- */}
       <tr>
