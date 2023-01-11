@@ -33,13 +33,15 @@ function ProjectRow({ project, onDeleteProject, onUpdateProject }) {
     <>
       {
         isEditing ?
-        <tr style={{"height": "0px"}}>
-          <td>
-            <EditProjectForm project={project} onUpdateProject={onUpdateProject} setIsEditing={setIsEditing}/>
-          </td>
-        </tr>
+          <tr style={{ "height": "0px" }}>
+            <td>
+              <EditProjectForm project={project} onUpdateProject={onUpdateProject} setIsEditing={setIsEditing} />
+            </td>
+          </tr>
           :
-          <tr key={id}>
+          null
+      }
+      <tr key={id}>
         <td>{name}</td>
         <td>{description}</td>
         <td>{status}</td>
@@ -50,8 +52,6 @@ function ProjectRow({ project, onDeleteProject, onUpdateProject }) {
           <button onClick={handleDeleteClick}>Delete</button>
         </td>
       </tr>
-      }
-      
       {/* ---- tickets section ---- */}
       <tr>
         {/* determines if ticket table should be displayed based on state */}

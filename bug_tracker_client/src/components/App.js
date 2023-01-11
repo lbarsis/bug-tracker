@@ -30,7 +30,6 @@ function App() {
       }
     })
     
-    console.log(updatedProject)
     setProjects(displayProjects)
   }
 

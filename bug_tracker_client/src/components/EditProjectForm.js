@@ -61,7 +61,7 @@ function EditProjectForm({ project, setIsEditing, onUpdateProject }) {
         />
 
         <label><b>Status</b></label>
-        <select id="status" name="status" onChange={handleChange}>
+        <select id="status" name="status" onChange={handleChange} value={formData.status}>
           <option value="new">New</option>
           <option value="complete">Complete</option>
           <option value="in-progress">In-progress</option>
