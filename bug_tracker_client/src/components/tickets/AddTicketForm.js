@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 function AddTicketForm({ setIsAddingTicket, project, onAddTicket, users }) {
 
@@ -10,6 +10,8 @@ function AddTicketForm({ setIsAddingTicket, project, onAddTicket, users }) {
     user: '',
     hours: 1
   })
+
+  console.log(formData.user)
 
   const userOptions = users.map(user => {
     return <option key={user.id} name={user.id} value={user.id}>{`${user.first_name} ${user.last_name}`}</option>
@@ -49,9 +51,10 @@ function AddTicketForm({ setIsAddingTicket, project, onAddTicket, users }) {
 
     setFormData({
       title: "",
-      priority: "",
+      priority: "Low",
       description: "",
-      status: "",
+      status: "New",
+      user: '',
       hours: 1
     })
 

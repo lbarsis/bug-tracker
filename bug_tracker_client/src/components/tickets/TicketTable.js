@@ -11,7 +11,6 @@ function TicketTable({ ticket }) {
 
   return (
     <tbody>
-      
       <tr className='active-row'>
         <td>{title}</td>
         <td>{priority}</td>
