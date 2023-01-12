@@ -35,8 +35,6 @@ function ProjectRow({ project, onDeleteProject, onUpdateProject }) {
     setIsAddingTicket(true)
   }
 
-  console.log(isAddingTicket)
-
   return (
     <>
       {
@@ -49,6 +47,7 @@ function ProjectRow({ project, onDeleteProject, onUpdateProject }) {
           :
           null
       }
+
       <tr key={id}>
         <td>{name}</td>
         <td>{description}</td>
@@ -61,14 +60,16 @@ function ProjectRow({ project, onDeleteProject, onUpdateProject }) {
         </td>
         <td><button onClick={openCreateTicketForm}>Create ticket</button></td>
       </tr>
+
       {
         isAddingTicket ?
           <tr>
-            <td><AddTicketForm setIsAddingTicket={setIsAddingTicket} /></td>
+            <td colSpan='7'><AddTicketForm setIsAddingTicket={setIsAddingTicket} project={project}/></td>
           </tr>
           :
           null
       }
+
       {/* ---- tickets section ---- */}
       <tr>
         {/* determines if ticket table should be displayed based on state */}

@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 
-function AddTicketForm({ setIsAddingTicket }) {
+function AddTicketForm({ setIsAddingTicket, project }) {
   const [formData, setFormData] = useState({
     title: "",
-    priority: "",
+    priority: "Low",
     description: "",
-    status: "",
+    status: "New",
     hours: 1
   })
 
@@ -23,24 +23,29 @@ function AddTicketForm({ setIsAddingTicket }) {
   function handleSubmit(e) {
     e.preventDefault();
 
-    fetch("http://localhost:9292/projects", {
+    fetch("http://localhost:9292/tickets", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        name: formData.name,
+        title: formData.title,
+        priority: formData.priority,
         description: formData.description,
-        status: formData.status
+        status: formData.status,
+        hours: formData.hours,
+        project_id: project.id
       })
     })
       .then(r => r.json())
-      .then(newProject => console.log(newProject))
+      .then(newTicket => console.log(newTicket))
 
     setFormData({
-      name: '',
-      description: '',
-      status: 'New'
+      title: "",
+      priority: "",
+      description: "",
+      status: "",
+      hours: 1
     })
 
     closeForm()
@@ -81,23 +86,22 @@ function AddTicketForm({ setIsAddingTicket }) {
             <option value="canceled">Canceled</option>
           </select>
 
-          <label><b>Description</b></label>
+          <label><b>Estimated Hours</b></label>
           <input
             type="text"
-            placeholder="Project name..."
-            className='new-project-description'
-            name="description"
-            style={{ height: "200px" }}
+            placeholder='1'
+            name="hours"
             required
             onChange={handleChange}
-            value={formData.description}
+            value={formData.hours}
           />
 
           <label><b>Description</b></label>
           <input
             type="text"
             placeholder="Project name..."
-            name="hours"
+            className='new-project-description'
+            name="description"
             style={{ height: "200px" }}
             required
             onChange={handleChange}

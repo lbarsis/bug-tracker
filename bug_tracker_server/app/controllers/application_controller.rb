@@ -59,6 +59,18 @@ class ApplicationController < Sinatra::Base
     project.to_json
   end
 
+  post '/tickets' do 
+    project = Ticket.create(
+      title: params[:title],
+      priority: params[:priority],
+      status: params[:status],
+      hours: params[:hours],
+      description: params[:description],
+      project_id: params[:project_id]
+    )
+    project.to_json
+  end
+
   #patch requests
 
   patch '/projects/:id' do 
