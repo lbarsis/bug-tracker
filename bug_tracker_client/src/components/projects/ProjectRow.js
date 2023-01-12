@@ -3,11 +3,12 @@ import EditProjectForm from './EditProjectForm';
 import TicketTable from '../tickets/TicketTable';
 import AddTicketForm from '../tickets/AddTicketForm';
 
-function ProjectRow({ project, onDeleteProject, onUpdateProject }) {
-  const { id, name, description, status, created_at, tickets } = project
+function ProjectRow({ project, onDeleteProject, onUpdateProject, users }) {
+  const { id, name, description, status, created_at } = project
   const [showTickets, setShowTickets] = useState(false)
   const [isEditingProject, setIsEditingProject] = useState(false)
   const [isAddingTicket, setIsAddingTicket] = useState(false)
+  const [tickets, setTickets] = useState(project.tickets)
 
   // question mark after tickets determines if tickets exist then map it
   const displayTickets = tickets?.map(ticket => {
@@ -33,6 +34,13 @@ function ProjectRow({ project, onDeleteProject, onUpdateProject }) {
 
   function openCreateTicketForm() {
     setIsAddingTicket(true)
+  }
+
+  function handleAddTicket(newTicket) {
+    setTickets([
+      ...tickets,
+      newTicket
+    ])
   }
 
   return (
@@ -64,7 +72,7 @@ function ProjectRow({ project, onDeleteProject, onUpdateProject }) {
       {
         isAddingTicket ?
           <tr>
-            <td colSpan='7'><AddTicketForm setIsAddingTicket={setIsAddingTicket} project={project}/></td>
+            <td colSpan='7'><AddTicketForm setIsAddingTicket={setIsAddingTicket} project={project} onAddTicket={handleAddTicket} users={users}/></td>
           </tr>
           :
           null

@@ -1,12 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-function AddTicketForm({ setIsAddingTicket, project }) {
+function AddTicketForm({ setIsAddingTicket, project, onAddTicket, users }) {
+
   const [formData, setFormData] = useState({
     title: "",
     priority: "Low",
     description: "",
     status: "New",
+    user: '',
     hours: 1
+  })
+
+  const userOptions = users.map(user => {
+    return <option key={user.id} name={user.id} value={user.id}>{`${user.first_name} ${user.last_name}`}</option>
   })
 
   function closeForm() {
@@ -34,11 +40,12 @@ function AddTicketForm({ setIsAddingTicket, project }) {
         description: formData.description,
         status: formData.status,
         hours: formData.hours,
-        project_id: project.id
+        project_id: project.id,
+        user_id: formData.user
       })
     })
       .then(r => r.json())
-      .then(newTicket => console.log(newTicket))
+      .then(newTicket => onAddTicket(newTicket))
 
     setFormData({
       title: "",
@@ -86,6 +93,12 @@ function AddTicketForm({ setIsAddingTicket, project }) {
             <option value="canceled">Canceled</option>
           </select>
 
+          <label><b>User</b></label>
+          <select id="user" name="user" onChange={handleChange} required>
+            <option></option>
+            {userOptions}
+          </select>
+
           <label><b>Estimated Hours</b></label>
           <input
             type="text"
@@ -107,6 +120,7 @@ function AddTicketForm({ setIsAddingTicket, project }) {
             onChange={handleChange}
             value={formData.description}
           />
+
         </div>
         <button type="submit" className="btn">Submit</button>
         <button type="button" className="btn cancel" onClick={closeForm}>Close</button>

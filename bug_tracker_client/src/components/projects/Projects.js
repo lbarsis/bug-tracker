@@ -2,10 +2,10 @@ import React from 'react';
 import AddProjectForm from './AddProjectForm';
 import ProjectRow from './ProjectRow';
 
-function Projects({projects, onAddProject, onDeleteProject, onUpdateProject }) {
+function Projects({projects, onAddProject, onDeleteProject, onUpdateProject, users }) {
 
   const projectRow = projects.map(project => {
-    return <ProjectRow project={project} key={project.id} className='project-row' onDeleteProject={onDeleteProject} onUpdateProject={onUpdateProject} />
+    return <ProjectRow project={project} key={project.id} className='project-row' onDeleteProject={onDeleteProject} onUpdateProject={onUpdateProject} users={users}/>
   })
 
   function openAddProjectForm() {

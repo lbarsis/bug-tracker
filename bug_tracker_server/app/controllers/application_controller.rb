@@ -66,7 +66,8 @@ class ApplicationController < Sinatra::Base
       status: params[:status],
       hours: params[:hours],
       description: params[:description],
-      project_id: params[:project_id]
+      project_id: params[:project_id],
+      user_id: params[:user_id]
     )
     project.to_json
   end

@@ -1,17 +1,22 @@
 import '../App.css';
-import {useState, useEffect} from 'react'
-import {Routes, Route} from "react-router-dom"
+import { useState, useEffect } from 'react'
+import { Routes, Route } from "react-router-dom"
 import Navbar from './Navbar';
 import Home from './Home';
 import Projects from './projects/Projects';
 
 function App() {
   const [projects, setProjects] = useState([])
+  const [users, setUsers] = useState([])
 
   useEffect(() => {
     fetch('http://localhost:9292/projects')
       .then(r => r.json())
       .then(projects => setProjects(projects))
+
+    fetch('http://localhost:9292/users')
+      .then(r => r.json())
+      .then(users => setUsers(users))
   }, []);
 
   function handleAddProject(newProject) {
@@ -29,7 +34,7 @@ function App() {
         return project
       }
     })
-    
+
     setProjects(displayProjects)
   }
 
@@ -43,14 +48,15 @@ function App() {
       <Navbar />
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/projects' 
-        element={<Projects 
-        projects={projects} 
-        setProjects={setProjects} 
-        onAddProject={handleAddProject} 
-        onDeleteProject={handleDeleteProject}
-        onUpdateProject={handleUpdateProject}
-        />} />
+        <Route path='/projects'
+          element={<Projects
+            projects={projects}
+            users={users}
+            setProjects={setProjects}
+            onAddProject={handleAddProject}
+            onDeleteProject={handleDeleteProject}
+            onUpdateProject={handleUpdateProject}
+          />} />
       </Routes>
     </div>
   );

@@ -11,13 +11,14 @@ function TicketTable({ ticket }) {
 
   return (
     <tbody>
+      
       <tr className='active-row'>
         <td>{title}</td>
         <td>{priority}</td>
         <td className='ticket-description'>{description}</td>
         <td>{status}</td>
         <td>{hours}</td>
-        <td onClick={onDisplayUser}>{user.first_name}</td>
+        <td onClick={onDisplayUser}>{user?.first_name}</td>
         <td>{created_at}</td>
       </tr>
       {displayUser ? <tr>
