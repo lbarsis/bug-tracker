@@ -11,8 +11,6 @@ function AddTicketForm({ setIsAddingTicket, project, onAddTicket, users }) {
     hours: 1
   })
 
-  console.log(formData.user)
-
   const userOptions = users.map(user => {
     return <option key={user.id} name={user.id} value={user.id}>{`${user.first_name} ${user.last_name}`}</option>
   })
