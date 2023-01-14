@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom"
 import Navbar from './Navbar';
 import Home from './Home';
 import Projects from './projects/Projects';
+import UserTable from './users/UserTable';
 
 function App() {
   const [projects, setProjects] = useState([])
@@ -58,6 +59,7 @@ function App() {
             onDeleteProject={handleDeleteProject}
             onUpdateProject={handleUpdateProject}
           />} />
+          <Route path='/users' element={<UserTable users={users}/>}/>
       </Routes>
     </div>
   );
