@@ -22,7 +22,6 @@ function App() {
   function handleAddProject(newProject) {
     newProject.tickets=[]
     setProjects([...projects, newProject])
-    console.log(newProject)
   }
 
   function handleUpdateProject(updatedProject) {

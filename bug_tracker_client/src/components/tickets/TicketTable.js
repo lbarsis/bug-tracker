@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import UserCard from '../UserCard';
 
 function TicketTable({ ticket }) {
@@ -19,15 +19,19 @@ function TicketTable({ ticket }) {
         <td>{hours}</td>
         <td onClick={onDisplayUser}>{user?.first_name}</td>
         <td>{created_at}</td>
+        <td>
+          <button>Edit</button>
+          <button>Delete</button>
+        </td>
       </tr>
       {displayUser ? <tr>
         <td colSpan='7'>
           <UserCard user={user} />
         </td>
       </tr>
-      :
-      null}
-      
+        :
+        null}
+
     </tbody>
   )
 }

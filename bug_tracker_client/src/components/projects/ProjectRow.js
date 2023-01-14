@@ -93,6 +93,7 @@ function ProjectRow({ project, onDeleteProject, onUpdateProject, users }) {
                   <th>Hours</th>
                   <th>User</th>
                   <th>Created At</th>
+                  <th></th>
                 </tr>
               </thead>
               {displayTickets}
