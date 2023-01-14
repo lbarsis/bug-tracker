@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import UserCard from '../UserCard';
+import UserCard from '../users/UserCard';
 import EditTicketForm from './EditTicketForm';
 
 function TicketTable({ ticket, users, onEditTicket, onDeleteTicket }) {
