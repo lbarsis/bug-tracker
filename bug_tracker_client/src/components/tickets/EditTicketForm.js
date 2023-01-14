@@ -39,7 +39,8 @@ function EditTicketForm({ ticket, setIsEditingTicket, users, onEditTicket }) {
         description: formData.description,
         status: formData.status,
         hours: formData.hours,
-        user_id: formData.user
+        user_id: formData.user,
+        project_id: ticket.project_id
       })
     })
       .then(r => r.json())
