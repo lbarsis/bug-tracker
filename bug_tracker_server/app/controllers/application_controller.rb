@@ -89,6 +89,21 @@ class ApplicationController < Sinatra::Base
     project.to_json
   end
 
+  
+  patch '/tickets/:id' do 
+    project = Ticket.find(params[:id])
+    project.update(
+      title: params[:title],
+      priority: params[:priority],
+      status: params[:status],
+      hours: params[:hours],
+      description: params[:description],
+      project_id: params[:project_id],
+      user_id: params[:user_id]
+    )
+    project.to_json
+  end
+
   # delete requests
 
   delete '/projects/:id' do 

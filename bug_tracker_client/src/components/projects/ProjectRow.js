@@ -10,11 +10,6 @@ function ProjectRow({ project, onDeleteProject, onUpdateProject, users }) {
   const [isAddingTicket, setIsAddingTicket] = useState(false)
   const [tickets, setTickets] = useState(project.tickets)
 
-  // question mark after tickets determines if tickets exist then map it
-  const displayTickets = tickets?.map(ticket => {
-    return <TicketTable key={ticket.id} ticket={ticket} />
-  })
-
   // changes state from true to false
   function onDisplayTickets() {
     setShowTickets(displayTickets => !displayTickets)
@@ -43,12 +38,32 @@ function ProjectRow({ project, onDeleteProject, onUpdateProject, users }) {
     ])
   }
 
+  function handleEditTicket(updatedTicket) {
+    const displayTickets = tickets.map(ticket => {
+      if (ticket.id === updatedTicket.id) {
+        return {
+          ...updatedTicket
+        }
+      } else {
+        return ticket
+      }
+    })
+    console.log(updatedTicket)
+    setTickets(displayTickets)
+  }
+
+    
+  // question mark after tickets determines if tickets exist then map it
+  const displayTickets = tickets?.map(ticket => {
+    return <TicketTable key={ticket.id} ticket={ticket} users={users} onEditTicket={handleEditTicket}/>
+  })
+
   return (
     <>
       {
         isEditingProject ?
           <tr style={{ "height": "0px" }}>
-            <td>
+            <td colSpan='7'>
               <EditProjectForm project={project} onUpdateProject={onUpdateProject} setIsEditingProject={setIsEditingProject} />
             </td>
           </tr>
@@ -82,7 +97,7 @@ function ProjectRow({ project, onDeleteProject, onUpdateProject, users }) {
       <tr>
         {/* determines if ticket table should be displayed based on state */}
         {showTickets ?
-          <td colSpan="5">
+          <td colSpan="7">
             <table className='project-table'>
               <thead>
                 <tr>
