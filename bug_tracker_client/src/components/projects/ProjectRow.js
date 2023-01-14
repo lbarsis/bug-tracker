@@ -41,7 +41,6 @@ function ProjectRow({ project, onDeleteProject, onUpdateProject, users }) {
       ...tickets,
       newTicket
     ])
-    console.log(newTicket)
   }
 
   return (
