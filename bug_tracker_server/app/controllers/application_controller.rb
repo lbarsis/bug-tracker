@@ -33,6 +33,11 @@ class ApplicationController < Sinatra::Base
     users.to_json(include: {tickets: { include: :project }})
   end
 
+  get '/users/:id' do
+    tickets = User.find(params[:id])
+    tickets.to_json
+  end
+
   get '/projects/:id/tickets' do
     tickets = Project.find(params[:id]).tickets
     tickets.to_json

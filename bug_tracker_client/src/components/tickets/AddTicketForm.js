@@ -45,7 +45,10 @@ function AddTicketForm({ setIsAddingTicket, project, onAddTicket, users }) {
       })
     })
       .then(r => r.json())
-      .then(newTicket => onAddTicket(newTicket))
+      .then(newTicket => {
+        fetch(`http://localhost:9292/users/${newTicket.user_id}`).then(r => r.json()).then(user => newTicket.user = user)
+        onAddTicket(newTicket)}
+        )
 
     setFormData({
       title: "",
