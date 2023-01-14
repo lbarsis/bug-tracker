@@ -38,6 +38,11 @@ function ProjectRow({ project, onDeleteProject, onUpdateProject, users }) {
     ])
   }
 
+  function handleDeleteTicket(id) {
+    const displayTickets = tickets.filter((ticket) => ticket.id !== id);
+    setTickets(displayTickets);
+  }
+
   function handleEditTicket(updatedTicket) {
     const displayTickets = tickets.map(ticket => {
       if (ticket.id === updatedTicket.id) {
@@ -55,7 +60,7 @@ function ProjectRow({ project, onDeleteProject, onUpdateProject, users }) {
     
   // question mark after tickets determines if tickets exist then map it
   const displayTickets = tickets?.map(ticket => {
-    return <TicketTable key={ticket.id} ticket={ticket} users={users} onEditTicket={handleEditTicket}/>
+    return <TicketTable key={ticket.id} ticket={ticket} users={users} onEditTicket={handleEditTicket} onDeleteTicket={handleDeleteTicket}/>
   })
 
   return (

@@ -6,7 +6,7 @@ function EditTicketForm({ ticket, setIsEditingTicket, users, onEditTicket }) {
     priority: ticket.priority,
     description: ticket.description,
     status: ticket.status,
-    user: ticket.user,
+    user: ticket.user.id,
     hours: ticket.hours
   })
 
@@ -101,7 +101,7 @@ function EditTicketForm({ ticket, setIsEditingTicket, users, onEditTicket }) {
             </select>
 
             <label><b>User</b></label>
-            <select id="user" name="user" onChange={handleChange} value={formData.user.id} required>
+            <select id="user" name="user" onChange={handleChange} value={formData.user} required>
               <option></option>
               {userOptions}
             </select>

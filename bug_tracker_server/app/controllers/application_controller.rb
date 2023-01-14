@@ -111,4 +111,10 @@ class ApplicationController < Sinatra::Base
     project.to_json
   end
 
+  
+  delete '/tickets/:id' do 
+    project = Ticket.find(params[:id]).destroy
+    project.to_json
+  end
+
 end

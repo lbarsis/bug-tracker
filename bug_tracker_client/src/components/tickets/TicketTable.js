@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import UserCard from '../UserCard';
 import EditTicketForm from './EditTicketForm';
 
-function TicketTable({ ticket, users, onEditTicket }) {
+function TicketTable({ ticket, users, onEditTicket, onDeleteTicket }) {
   const { title, priority, description, status, hours, user, created_at } = ticket
   const [displayUser, setDisplayUser] = useState(false)
   const [isEditingTicket, setIsEditingTicket] = useState(false)
@@ -13,6 +13,14 @@ function TicketTable({ ticket, users, onEditTicket }) {
 
   function openEditTicketForm() {
     setIsEditingTicket(true)
+  }
+
+  function deleteTicket() {
+    fetch(`http://localhost:9292/tickets/${ticket.id}`, {
+      method: 'DELETE'
+    })
+
+    onDeleteTicket(ticket.id)
   }
 
   return (
@@ -27,7 +35,7 @@ function TicketTable({ ticket, users, onEditTicket }) {
         <td>{created_at}</td>
         <td>
           <button onClick={openEditTicketForm}>Edit</button>
-          <button>Delete</button>
+          <button onClick={deleteTicket}>Delete</button>
         </td>
       </tr>
 
