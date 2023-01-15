@@ -1,9 +1,10 @@
 import React from 'react';
 
-function Home() {
+function Home({projects}) {
+  console.log(projects)
   return (
     <div>
-      home
+      
     </div>
   );
 }

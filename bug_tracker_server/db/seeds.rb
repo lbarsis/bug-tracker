@@ -16,15 +16,15 @@ end
   Project.create(
     name: Faker::App.name,
     description: Faker::Movie.quote,
-    status: Faker::Subscription.status
+    status: ['new','in-progress','complete','canceled'].sample
   )
 
   rand(1..5).times do
     Ticket.create(
       title: Faker::Hipster.word,
-      priority: rand(1..3),
+      priority: ['high','medium', 'low'].sample,
       description: Faker::Hipster.sentence,
-      status: Faker::Subscription.status,
+      status: ['new','in-progress','complete','canceled'].sample,
       hours: rand(1..10),
       user_id: rand(User.all.first.id..User.all.last.id),
       project_id:rand(Project.all.first.id..Project.all.last.id)
