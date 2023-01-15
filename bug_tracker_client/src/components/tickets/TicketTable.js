@@ -1,11 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import UserCard from '../users/UserCard';
 import EditTicketForm from './EditTicketForm';
 
 function TicketTable({ ticket, users, onEditTicket, onDeleteTicket }) {
-  const { title, priority, description, status, hours, user, created_at } = ticket
+  const { title, priority, description, status, hours, created_at, user_id } = ticket
   const [displayUser, setDisplayUser] = useState(false)
   const [isEditingTicket, setIsEditingTicket] = useState(false)
+  const [user, setUser] = useState({})
+
+  useEffect(() => {
+    fetch(`http://localhost:9292/users/${user_id}`)
+    .then(r => r.json())
+    .then(user => setUser(user))
+  }, []);
+
+  console.log(user)
 
   function onDisplayUser() {
     setDisplayUser(displayUser => !displayUser)
