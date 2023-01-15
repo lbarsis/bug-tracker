@@ -4,16 +4,9 @@ function UserCard({ user }) {
   const { first_name, last_name, phone, email, profile_image, tickets } = user
 
   const displayCompletedTicketCount = tickets.filter(ticket => ticket.status === 'complete').length
+  const displayInProgressTicketCount = tickets.filter(ticket => ticket.status === 'in-progress').length
 
   return (
-    // <div className="card">
-    //   <img src={profile_image} alt="Avatar" />
-    //     <div className="container">
-    //       <h4><b>{`${first_name} ${last_name}`}</b></h4>
-    //       <p>{phone}</p>
-    //       <p>{email}</p>
-    //     </div>
-    // </div>
     <div className="card">
       <div className="user-header">
         <h4><b>{`${first_name} ${last_name}`}</b></h4>
@@ -30,7 +23,7 @@ function UserCard({ user }) {
           <h4><b>Completed Tickets:</b> {displayCompletedTicketCount}</h4>
         </div>
         <div>
-          <h4><b>Completed Tickets:</b> {displayCompletedTicketCount}</h4>
+          <h4><b>Current Tickets:</b> {displayInProgressTicketCount}</h4>
         </div>
       </div>
     </div>

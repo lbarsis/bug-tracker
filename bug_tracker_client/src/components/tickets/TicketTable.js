@@ -14,8 +14,6 @@ function TicketTable({ ticket, users, onEditTicket, onDeleteTicket }) {
     .then(user => setUser(user))
   }, []);
 
-  console.log(user)
-
   function onDisplayUser() {
     setDisplayUser(displayUser => !displayUser)
   }
