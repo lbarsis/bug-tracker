@@ -47,8 +47,6 @@
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
   margin: 50px;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
   gap: 0px 0px;
   grid-auto-flow: row;
   grid-template-areas:
@@ -57,29 +55,39 @@
     "ticket-data profile-picture profile-picture";
 }
 
-.user-header {  display: grid;
+.user-header {  
+  display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr;
+  grid-template-rows: .25fr;
   gap: 0px 0px;
   grid-auto-flow: row;
   grid-template-areas:
     ". . .";
   grid-area: user-header;
+  background-color: #c4c4c4;
+  color: #ffffff;
+  padding: 10px;
 }
 
-.profile-picture {  display: grid;
+.profile-picture {  
+  display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr;
+  grid-template-rows: 1.75fr;
   gap: 0px 0px;
   grid-auto-flow: row;
   grid-template-areas:
     ".";
   grid-area: profile-picture;
+  background-color: aqua;
+  border-top-left-radius: 100%;
+  text-align: right;
+  padding-top: 15px;
 }
 
-.ticket-data {  display: grid;
+.ticket-data {  
+  display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: 1.75fr 1.75fr;
   gap: 0px 0px;
   grid-auto-flow: row;
   grid-template-areas:
