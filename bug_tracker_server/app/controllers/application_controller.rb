@@ -65,7 +65,7 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/tickets' do 
-    project = Ticket.create(
+    ticket = Ticket.create(
       title: params[:title],
       priority: params[:priority],
       status: params[:status],
@@ -74,7 +74,18 @@ class ApplicationController < Sinatra::Base
       project_id: params[:project_id],
       user_id: params[:user_id]
     )
-    project.to_json
+    ticket.to_json
+  end
+
+  post '/users' do 
+    user = User.create(
+      first_name: params[:first_name],
+      last_name: params[:last_name],
+      phone: params[:phone],
+      email: params[:email],
+      profile_image: params[:profile_image]
+    )
+    user.to_json
   end
 
   #patch requests
@@ -114,6 +125,11 @@ class ApplicationController < Sinatra::Base
   
   delete '/tickets/:id' do 
     project = Ticket.find(params[:id]).destroy
+    project.to_json
+  end
+
+  delete '/users/:id' do 
+    project = User.find(params[:id]).destroy
     project.to_json
   end
 

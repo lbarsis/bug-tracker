@@ -12,7 +12,7 @@ function TicketTable({ ticket, users, onEditTicket, onDeleteTicket }) {
     fetch(`http://localhost:9292/users/${user_id}`)
     .then(r => r.json())
     .then(user => setUser(user))
-  }, []);
+  }, [user_id]);
 
   function onDisplayUser() {
     setDisplayUser(displayUser => !displayUser)
@@ -57,7 +57,7 @@ function TicketTable({ ticket, users, onEditTicket, onDeleteTicket }) {
       {isEditingTicket ?
         <tr>
           <td colSpan='7'>
-            <EditTicketForm ticket={ticket} setIsEditingTicket={setIsEditingTicket} users={users} onEditTicket={onEditTicket}/>
+            <EditTicketForm ticket={ticket} setIsEditingTicket={setIsEditingTicket} users={users} user={user} onEditTicket={onEditTicket}/>
           </td>
         </tr>
         :

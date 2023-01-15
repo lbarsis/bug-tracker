@@ -1,16 +1,25 @@
 import React, {useState} from 'react';
+import AddUserForm from './AddUserForm';
 import UserCard from './UserCard';
 import UserRow from './UserRow';
 
-function UserTable({ users }) {
+function UserTable({ users, onAddUser }) {
   const [displayUser, setDisplayUser] = useState(null)
+  const [displayAddUserForm, setDisplayAddUserForm] = useState(false)
 
   const displayUsers = users.map(user => {
     return <UserRow key={user.id} user={user} setDisplayUser={setDisplayUser} />
   })
 
+  function handleDisplayAddUserForm() {
+    setDisplayAddUserForm(true)
+  }
+
   return (
     <div>
+      {
+        displayAddUserForm ? <AddUserForm setDisplayAddUserForm={setDisplayAddUserForm} onAddUser={onAddUser}/> : <button onClick={handleDisplayAddUserForm}>Add User</button>
+      }
       <table className='project-table'>
         <thead>
           <tr>
@@ -18,6 +27,7 @@ function UserTable({ users }) {
             <th>Last Name</th>
             <th>Phone</th>
             <th>Email</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>

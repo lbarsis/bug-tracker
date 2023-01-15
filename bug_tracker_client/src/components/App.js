@@ -45,6 +45,15 @@ function App() {
     setProjects(displayProjects);
   }
 
+  
+  function handleAddUser(newUser) {
+    newUser.tickets=[]
+    setUsers([
+      ...users,
+      newUser
+    ])
+  }
+
   return (
     <div className="App">
       <Navbar />
@@ -59,7 +68,7 @@ function App() {
             onDeleteProject={handleDeleteProject}
             onUpdateProject={handleUpdateProject}
           />} />
-          <Route path='/users' element={<UserTable users={users}/>}/>
+          <Route path='/users' element={<UserTable users={users} onAddUser={handleAddUser}/>}/>
       </Routes>
     </div>
   );

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function EditTicketForm({ ticket, setIsEditingTicket, users, onEditTicket }) {
+function EditTicketForm({ ticket, setIsEditingTicket, users, onEditTicket, user }) {
   const [formData, setFormData] = useState({
     title: ticket.title,
     priority: ticket.priority,
@@ -45,10 +45,8 @@ function EditTicketForm({ ticket, setIsEditingTicket, users, onEditTicket }) {
     })
       .then(r => r.json())
       .then(updatedTicket => {
-        fetch(`http://localhost:9292/users/${updatedTicket.user_id}`).then(r => r.json()).then(user => {
-          updatedTicket.user = user
-          onEditTicket(updatedTicket)
-        })
+        updatedTicket.user = user
+        onEditTicket(updatedTicket)
       })
 
     setFormData({
