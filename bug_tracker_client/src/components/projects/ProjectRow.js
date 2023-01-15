@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import EditProjectForm from './EditProjectForm';
 import TicketTable from '../tickets/TicketTable';
 import AddTicketForm from '../tickets/AddTicketForm';
@@ -8,7 +8,16 @@ function ProjectRow({ project, onDeleteProject, onUpdateProject, users }) {
   const [showTickets, setShowTickets] = useState(false)
   const [isEditingProject, setIsEditingProject] = useState(false)
   const [isAddingTicket, setIsAddingTicket] = useState(false)
-  const [tickets, setTickets] = useState(project.tickets)
+  const [tickets, setTickets] = useState([])
+
+  useEffect(() => {
+    fetch('http://localhost:9292/tickets')
+    .then(r => r.json())
+    .then(tickets => {
+      const displayTickets = tickets.filter(ticket => ticket.project_id === id)   
+      setTickets(displayTickets)
+    })
+  },[id])
 
   // changes state from true to false
   function onDisplayTickets() {
@@ -53,7 +62,6 @@ function ProjectRow({ project, onDeleteProject, onUpdateProject, users }) {
         return ticket
       }
     })
-    console.log(updatedTicket)
     setTickets(displayTickets)
   }
 
