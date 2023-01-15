@@ -88,7 +88,7 @@ function ProjectRow({ project, onDeleteProject, onUpdateProject, users }) {
         <td>{name}</td>
         <td>{description}</td>
         <td>{status}</td>
-        <td onClick={onDisplayTickets}>{tickets ? tickets.length : 0}</td>
+        <td onClick={tickets.length === 0 ? null : onDisplayTickets}>{tickets ? tickets.length : 0}</td>
         <td>{created_at}</td>
         <td>
           <button onClick={openEditProjectForm} id='edit'>Edit</button>
