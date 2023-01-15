@@ -45,13 +45,17 @@ function App() {
     setProjects(displayProjects);
   }
 
-  
   function handleAddUser(newUser) {
     newUser.tickets=[]
     setUsers([
       ...users,
       newUser
     ])
+  }
+
+  function handleDeleteUser(id) {
+    const displayUsers = users.filter(user => user.id !== id)
+    setUsers(displayUsers)
   }
 
   return (
@@ -68,7 +72,7 @@ function App() {
             onDeleteProject={handleDeleteProject}
             onUpdateProject={handleUpdateProject}
           />} />
-          <Route path='/users' element={<UserTable users={users} onAddUser={handleAddUser}/>}/>
+          <Route path='/users' element={<UserTable users={users} onAddUser={handleAddUser} onDeleteUser={handleDeleteUser} />}/>
       </Routes>
     </div>
   );

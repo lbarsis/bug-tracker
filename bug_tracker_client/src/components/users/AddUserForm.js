@@ -25,6 +25,16 @@ function AddUserForm({ setDisplayAddUserForm, onAddUser }) {
     })
     .then(r => r.json())
     .then(user => onAddUser(user))
+
+    setFormData({
+      firstName: '',
+      lastName: '',
+      phone: '',
+      email: '',
+      profileImage: ''
+    })
+
+    closeForm()
   }
 
   function handleChange(e) {
@@ -39,7 +49,7 @@ function AddUserForm({ setDisplayAddUserForm, onAddUser }) {
   }
 
   return (
-    <div>
+    <div className='form-popup' id='createTicketForm'>
       <form className="form-container" onSubmit={handleSubmit}>
         <h1>Add User</h1>
 

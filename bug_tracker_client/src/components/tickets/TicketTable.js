@@ -41,8 +41,8 @@ function TicketTable({ ticket, users, onEditTicket, onDeleteTicket }) {
         <td onClick={onDisplayUser}>{user?.first_name}</td>
         <td>{created_at}</td>
         <td>
-          <button onClick={openEditTicketForm}>Edit</button>
-          <button onClick={deleteTicket}>Delete</button>
+          <button onClick={openEditTicketForm} id='edit'>Edit</button>
+          <button onClick={deleteTicket} id='delete'>Delete</button>
         </td>
       </tr>
 

@@ -1,14 +1,14 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import AddUserForm from './AddUserForm';
 import UserCard from './UserCard';
 import UserRow from './UserRow';
 
-function UserTable({ users, onAddUser }) {
+function UserTable({ users, onAddUser, onDeleteUser }) {
   const [displayUser, setDisplayUser] = useState(null)
   const [displayAddUserForm, setDisplayAddUserForm] = useState(false)
 
   const displayUsers = users.map(user => {
-    return <UserRow key={user.id} user={user} setDisplayUser={setDisplayUser} />
+    return <UserRow key={user.id} user={user} setDisplayUser={setDisplayUser} onDeleteUser={onDeleteUser} />
   })
 
   function handleDisplayAddUserForm() {
@@ -18,7 +18,9 @@ function UserTable({ users, onAddUser }) {
   return (
     <div>
       {
-        displayAddUserForm ? <AddUserForm setDisplayAddUserForm={setDisplayAddUserForm} onAddUser={onAddUser}/> : <button onClick={handleDisplayAddUserForm}>Add User</button>
+        displayAddUserForm ? <AddUserForm setDisplayAddUserForm={setDisplayAddUserForm} onAddUser={onAddUser} setDisplayUser={setDisplayUser} />
+          :
+          <button className="open-button" onClick={handleDisplayAddUserForm}>Add User</button>
       }
       <table className='project-table'>
         <thead>
@@ -36,9 +38,9 @@ function UserTable({ users, onAddUser }) {
       </table>
       {
         displayUser ?
-        <UserCard user={displayUser} />
-        :
-        null
+          <UserCard user={displayUser} />
+          :
+          null
       }
     </div>
 

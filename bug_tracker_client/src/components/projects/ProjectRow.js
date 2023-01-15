@@ -91,8 +91,8 @@ function ProjectRow({ project, onDeleteProject, onUpdateProject, users }) {
         <td onClick={onDisplayTickets}>{tickets ? tickets.length : 0}</td>
         <td>{created_at}</td>
         <td>
-          <button onClick={openEditProjectForm}>Edit</button>
-          <button onClick={handleDeleteClick}>Delete</button>
+          <button onClick={openEditProjectForm} id='edit'>Edit</button>
+          <button onClick={handleDeleteClick} id='delete'>Delete</button>
         </td>
         <td><button onClick={openCreateTicketForm}>Create ticket</button></td>
       </tr>

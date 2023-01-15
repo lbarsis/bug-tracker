@@ -1,6 +1,6 @@
 import React from 'react';
 
-function UserRow({user, setDisplayUser}) {
+function UserRow({user, setDisplayUser, onDeleteUser}) {
 
   function handleDisplayUser() {
     setDisplayUser({...user})
@@ -10,7 +10,7 @@ function UserRow({user, setDisplayUser}) {
     fetch(`http://localhost:9292/users/${user.id}`,{
       method: 'DELETE'
     })
-    console.log('deleted user')
+    onDeleteUser(user.id)
   }
 
   return (
@@ -19,7 +19,7 @@ function UserRow({user, setDisplayUser}) {
         <td>{user.last_name}</td>
         <td>{user.phone}</td>
         <td>{user.email}</td>
-        <td><button onClick={deleteUser}>Delete</button></td>
+        <td><button onClick={deleteUser} id='delete'>Delete</button></td>
       </tr>
   );
 }

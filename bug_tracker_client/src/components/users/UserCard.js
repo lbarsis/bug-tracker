@@ -20,10 +20,12 @@ function UserCard({ user }) {
       </div>
       <div className="ticket-data">
         <div>
-          <h4><b>Completed Tickets:</b> {displayCompletedTicketCount}</h4>
+          <h4><b>Completed Tickets:</b></h4>
+          <h2> {displayCompletedTicketCount}</h2>
         </div>
         <div>
-          <h4><b>Current Tickets:</b> {displayInProgressTicketCount}</h4>
+          <h4><b>Current Tickets:</b></h4>
+          <h2>{displayInProgressTicketCount}</h2>
         </div>
       </div>
     </div>
