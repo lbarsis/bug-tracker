@@ -62,8 +62,8 @@ function App() {
     <div className="App">
       <Navbar />
       <Routes>
-        <Route path='/' element={<Home projects={projects}/>} />
-        <Route path='/projects'
+        {/* <Route path='/' element={<Home projects={projects}/>} /> */}
+        <Route path='/'
           element={<Projects
             projects={projects}
             users={users}
