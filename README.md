@@ -31,39 +31,11 @@ npm start
 ```
 
 ## Usage
-1. **Navigate to the hompage**
-Here will be a brief description on how the application can be used. It is recommended this page is reviewed prior to starting. The descriptions of each page here will give a summary of how they can be used together.
+1. **Projects**
+The application will start on the Projects page with any existing data that may be in the server. To add a project to track issues, simply click the `New Project` button in the bottom right hand corner of the screen. This will display a form, fill out all the information and submit it, a new project will appear at the bottom. On the right side of every project is a `Create ticket` button, clicking this will display another form that allows a ticket to be created. To view the tickets associated with a job, click on the `Tickets` field for the desired job. A list of tickets will be displayed which each one can be edited or deleted. A new ticket can alos be created to add to the list.
 
-2. **Navigate to the Add Item page**
-Going directly to the Inventory page will only show you a header because no items have been added at the start of the application. The Add Item page allows users to add items and get their inventory started. This page consists of a single form with eight input fields: Category, Name, Vendor, Description, Status, Flag Amount, On Hand, Unit of Measure.
-
-### Category
-The Category input is the set or group that an item can belong to. For example, if you were inventorying cars and wanted to group them by manufacturer, you could select Ford for all ford models or Toyota for all Toyota models. When the application is initially opened there will not be any categories to choose from. This is because the user is responsible for creating their own categories based on specific needs. 
-
-To add a category to the list, simply select 'Other' from the drop down menu. A new field will appear that will allow an input to be typed. Type any string into this field and continue to the 'Name' field. *As of right now, there is no way to delete a category once it has been added except through modifying the db.json file*
-
-After all the fields are input and the item is submitted, this category will be available from the drop down menu.
-
-### Name
-The name of the item.
-
-### Vendor
-Vendor is the location or manufacturer that the item is purchased from.
-
-### Description
-Description is used to explain what the item is and how it is used in specific applications.
-
-### Status
-Status is used to denote the current state the item is in. Example: if an item is fully stocked, the user could write 'In Stock' in the field. If the item is low or out, 'Out of Stock' could be input, or 'On Order' if the item has already been ordered. 
-
-### Flag Amount
-The Flag Amount is the point at which the application should notify you that the quantity of stock is at it's lowest point. If you always need to have 5 of an specific item and the storage drops to 5 or lower, then the item will be flagged for reorder.
-
-### On Hand
-The On Hand amount is the current stock available for a specific item.
-
-### UoM (Unit of Measure)
-Unit of measure is the way an item is counted. String can be counted in linear feet or 'LF', pens will most likely be counted in boxes or 'BOX' and larger items could potentially be listed as each or 'EA'.
+2. **Users**
+The Users tab is where all the users can be added or deleted. To view a user already on the system click any row to display the detailed information and ticket specific stats. A user can be created by clicking the `Add User` button on the top right of the screen. A new form will appear with input fields to fill out and submit. This user can also seen in the dropdown menu when creating or editing a ticket. 
 
 ## Examples
 ![Example](./images/video1765546443.gif)
