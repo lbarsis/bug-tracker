@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_01_08_022910) do
+ActiveRecord::Schema.define(version: 2023_01_18_015748) do
 
   create_table "projects", force: :cascade do |t|
     t.string "name"
@@ -41,6 +41,8 @@ ActiveRecord::Schema.define(version: 2023_01_08_022910) do
     t.string "profile_image"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "get_completed_tickets"
+    t.integer "get_in_progress_tickets"
   end
 
 end

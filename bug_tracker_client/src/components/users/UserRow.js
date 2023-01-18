@@ -3,7 +3,7 @@ import React from 'react';
 function UserRow({user, setDisplayUser, onDeleteUser}) {
 
   function handleDisplayUser() {
-    setDisplayUser({...user})
+    setDisplayUser(user)
   }
 
   function deleteUser() {
