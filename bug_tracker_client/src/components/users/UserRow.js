@@ -6,12 +6,12 @@ function UserRow({user, setDisplayUser, onDeleteUser}) {
     setDisplayUser(user)
   }
 
-  function deleteUser() {
-    fetch(`http://localhost:9292/users/${user.id}`,{
-      method: 'DELETE'
-    })
-    onDeleteUser(user.id)
-  }
+  // function deleteUser() {
+  //   fetch(`http://localhost:9292/users/${user.id}`,{
+  //     method: 'DELETE'
+  //   })
+  //   onDeleteUser(user.id)
+  // }
 
   return (
     <tr key={user.id} onClick={handleDisplayUser}>
@@ -19,7 +19,7 @@ function UserRow({user, setDisplayUser, onDeleteUser}) {
         <td>{user.last_name}</td>
         <td>{user.phone}</td>
         <td>{user.email}</td>
-        <td><button onClick={deleteUser} id='delete'>Delete</button></td>
+        {/* <td><button onClick={deleteUser} id='delete'>Delete</button></td> */}
       </tr>
   );
 }

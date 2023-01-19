@@ -82,7 +82,7 @@ function EditTicketForm({ ticket, setIsEditingTicket, users, onEditTicket, user 
 
             <div className='ticket-input-grid-item'>
               <label><b>Priority</b></label>
-              <select id="priority" name="priority" onChange={handleChange}>
+              <select id="priority" name="priority" onChange={handleChange} value={formData.priority}>
                 <option value="low">Low</option>
                 <option value="medium">Medium</option>
                 <option value="high">High</option>
@@ -117,7 +117,7 @@ function EditTicketForm({ ticket, setIsEditingTicket, users, onEditTicket, user 
             <label><b>Description</b></label>
             <input
               type="text"
-              placeholder="Project name..."
+              placeholder="Ticket Description..."
               className='new-project-description'
               name="description"
               style={{ height: "200px" }}
