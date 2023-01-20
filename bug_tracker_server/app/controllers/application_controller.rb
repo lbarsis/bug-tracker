@@ -18,16 +18,6 @@ class ApplicationController < Sinatra::Base
     )
   end
 
-  get '/projects/:id' do
-    project = Project.find(params[:id])
-    project.to_json
-  end
-
-  get '/tickets' do
-    tickets = Ticket.all
-    tickets.to_json(include: :user)
-  end
-
   get '/users' do
     users = User.all
     users.to_json(include: {tickets: { include: :project }})
@@ -36,21 +26,6 @@ class ApplicationController < Sinatra::Base
   get '/users/:id' do
     tickets = User.find(params[:id])
     tickets.to_json(include: :tickets)
-  end
-
-  get '/projects/:id/tickets' do
-    tickets = Project.find(params[:id]).tickets
-    tickets.to_json
-  end
-
-  get '/users/:id/tickets' do
-    tickets = User.find(params[:id]).tickets
-    tickets.to_json
-  end
-
-  get '/users/:id/projects' do
-    tickets = User.find(params[:id]).tickets
-    tickets.to_json
   end
 
   # Post requests
