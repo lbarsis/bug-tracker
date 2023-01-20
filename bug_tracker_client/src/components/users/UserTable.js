@@ -3,12 +3,12 @@ import AddUserForm from './AddUserForm';
 import UserCard from './UserCard';
 import UserRow from './UserRow';
 
-function UserTable({ users, onAddUser, onDeleteUser }) {
+function UserTable({ users, onAddUser }) {
   const [displayUser, setDisplayUser] = useState(null)
   const [displayAddUserForm, setDisplayAddUserForm] = useState(false)
 
   const displayUsers = users.map(user => {
-    return <UserRow key={user.id} user={user} setDisplayUser={setDisplayUser} displayUser={displayUser} onDeleteUser={onDeleteUser} />
+    return <UserRow key={user.id} user={user} setDisplayUser={setDisplayUser} displayUser={displayUser} />
   })
 
   function handleDisplayAddUserForm() {

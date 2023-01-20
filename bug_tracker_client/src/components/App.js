@@ -102,11 +102,6 @@ function App() {
     ])
   }
 
-  function handleDeleteUser(id) {
-    const displayUsers = users.filter(user => user.id !== id)
-    setUsers(displayUsers)
-  }
-
   return (
     <div className="App">
       <Navbar />
@@ -124,7 +119,7 @@ function App() {
             onUpdateTicket={handleUpdateTicket}
             onDeleteTicket={handleDeleteTicket}
           />} />
-          <Route path='/users' element={<UserTable users={users} onAddUser={handleAddUser} onDeleteUser={handleDeleteUser} />}/>
+          <Route path='/users' element={<UserTable users={users} onAddUser={handleAddUser} />}/>
       </Routes>
     </div>
   );

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import UserCard from '../users/UserCard';
 import EditTicketForm from './EditTicketForm';
 
-function TicketTable({ ticket, users, onEditTicket, onDeleteTicket, onUpdateTicket }) {
+function TicketTable({ ticket, users, onDeleteTicket, onUpdateTicket }) {
   const { title, priority, description, status, hours, created_at, user_id } = ticket
   const [displayUser, setDisplayUser] = useState(false)
   const [isEditingTicket, setIsEditingTicket] = useState(false)
