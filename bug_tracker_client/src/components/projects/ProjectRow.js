@@ -1,23 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import EditProjectForm from './EditProjectForm';
 import TicketTable from '../tickets/TicketTable';
 import AddTicketForm from '../tickets/AddTicketForm';
 
-function ProjectRow({ project, onDeleteProject, onUpdateProject, users }) {
+function ProjectRow({ project, onDeleteProject, onUpdateProject, users, onAddTicket, onUpdateTicket, onDeleteTicket }) {
   const { id, name, description, status, created_at } = project
   const [showTickets, setShowTickets] = useState(false)
   const [isEditingProject, setIsEditingProject] = useState(false)
   const [isAddingTicket, setIsAddingTicket] = useState(false)
-  const [tickets, setTickets] = useState([])
-
-  useEffect(() => {
-    fetch('http://localhost:9292/tickets')
-    .then(r => r.json())
-    .then(tickets => {
-      const displayTickets = tickets.filter(ticket => ticket.project_id === id)   
-      setTickets(displayTickets)
-    })
-  },[id])
 
   // changes state from true to false
   function onDisplayTickets() {
@@ -40,35 +30,9 @@ function ProjectRow({ project, onDeleteProject, onUpdateProject, users }) {
     setIsAddingTicket(true)
   }
 
-  function handleAddTicket(newTicket) {
-    setTickets([
-      ...tickets,
-      newTicket
-    ])
-  }
-
-  function handleDeleteTicket(id) {
-    const displayTickets = tickets.filter((ticket) => ticket.id !== id);
-    setTickets(displayTickets);
-  }
-
-  function handleEditTicket(updatedTicket) {
-    const displayTickets = tickets.map(ticket => {
-      if (ticket.id === updatedTicket.id) {
-        return {
-          ...updatedTicket
-        }
-      } else {
-        return ticket
-      }
-    })
-    setTickets(displayTickets)
-  }
-
-    
   // question mark after tickets determines if tickets exist then map it
-  const displayTickets = tickets?.map(ticket => {
-    return <TicketTable key={ticket.id} ticket={ticket} users={users} onEditTicket={handleEditTicket} onDeleteTicket={handleDeleteTicket}/>
+  const displayTickets = project.tickets?.map(ticket => {
+    return <TicketTable key={ticket.id} ticket={ticket} users={users} onUpdateTicket={onUpdateTicket} onDeleteTicket={onDeleteTicket}/>
   })
 
   return (
@@ -88,7 +52,7 @@ function ProjectRow({ project, onDeleteProject, onUpdateProject, users }) {
         <td>{name}</td>
         <td>{description}</td>
         <td>{status}</td>
-        <td onClick={tickets.length === 0 ? null : onDisplayTickets}>{tickets ? tickets.length : 0}</td>
+        <td onClick={project.tickets.length === 0 ? null : onDisplayTickets}>{project.tickets ? project.tickets.length : 0}</td>
         <td>{created_at}</td>
         <td>
           <button onClick={openEditProjectForm} id='edit'>Edit</button>
@@ -100,7 +64,7 @@ function ProjectRow({ project, onDeleteProject, onUpdateProject, users }) {
       {
         isAddingTicket ?
           <tr>
-            <td colSpan='7'><AddTicketForm setIsAddingTicket={setIsAddingTicket} project={project} onAddTicket={handleAddTicket} users={users}/></td>
+            <td colSpan='7'><AddTicketForm setIsAddingTicket={setIsAddingTicket} onAddTicket={onAddTicket} project={project} users={users}/></td>
           </tr>
           :
           null

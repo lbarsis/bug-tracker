@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import UserCard from '../users/UserCard';
 import EditTicketForm from './EditTicketForm';
 
-function TicketTable({ ticket, users, onEditTicket, onDeleteTicket }) {
+function TicketTable({ ticket, users, onEditTicket, onDeleteTicket, onUpdateTicket }) {
   const { title, priority, description, status, hours, created_at, user_id } = ticket
   const [displayUser, setDisplayUser] = useState(false)
   const [isEditingTicket, setIsEditingTicket] = useState(false)
@@ -27,7 +27,7 @@ function TicketTable({ ticket, users, onEditTicket, onDeleteTicket }) {
       method: 'DELETE'
     })
 
-    onDeleteTicket(ticket.id)
+    onDeleteTicket(ticket.project_id, ticket.id)
   }
 
   return (
@@ -57,7 +57,7 @@ function TicketTable({ ticket, users, onEditTicket, onDeleteTicket }) {
       {isEditingTicket ?
         <tr>
           <td colSpan='7'>
-            <EditTicketForm ticket={ticket} setIsEditingTicket={setIsEditingTicket} users={users} user={user} onEditTicket={onEditTicket}/>
+            <EditTicketForm ticket={ticket} setIsEditingTicket={setIsEditingTicket} users={users} user={user} onUpdateTicket={onUpdateTicket}/>
           </td>
         </tr>
         :

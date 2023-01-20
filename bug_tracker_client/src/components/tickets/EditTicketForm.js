@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function EditTicketForm({ ticket, setIsEditingTicket, users, onEditTicket, user }) {
+function EditTicketForm({ ticket, setIsEditingTicket, users, onUpdateTicket, user }) {
   const [formData, setFormData] = useState({
     title: ticket.title,
     priority: ticket.priority,
@@ -46,7 +46,7 @@ function EditTicketForm({ ticket, setIsEditingTicket, users, onEditTicket, user 
       .then(r => r.json())
       .then(updatedTicket => {
         updatedTicket.user = user
-        onEditTicket(updatedTicket)
+        onUpdateTicket(updatedTicket.project_id, updatedTicket.id, updatedTicket)
       })
 
     setFormData({
