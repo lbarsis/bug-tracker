@@ -37,9 +37,6 @@ The application will start on the Projects page with any existing data that may 
 2. **Users**
 The Users tab is where all the users can be added or deleted. To view a user already on the system click any row to display the detailed information and ticket specific stats. A user can be created by clicking the `Add User` button on the top right of the screen. A new form will appear with input fields to fill out and submit. This user can also seen in the dropdown menu when creating or editing a ticket. 
 
-## Examples
-![Example](./images/video1765546443.gif)
-
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
 
