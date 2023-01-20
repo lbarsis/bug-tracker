@@ -8,7 +8,7 @@ function UserTable({ users, onAddUser, onDeleteUser }) {
   const [displayAddUserForm, setDisplayAddUserForm] = useState(false)
 
   const displayUsers = users.map(user => {
-    return <UserRow key={user.id} user={user} setDisplayUser={setDisplayUser} onDeleteUser={onDeleteUser} />
+    return <UserRow key={user.id} user={user} setDisplayUser={setDisplayUser} displayUser={displayUser} onDeleteUser={onDeleteUser} />
   })
 
   function handleDisplayAddUserForm() {
@@ -37,10 +37,10 @@ function UserTable({ users, onAddUser, onDeleteUser }) {
         </tbody>
       </table>
       {
-        displayUser ?
-          <UserCard user={displayUser} />
-          :
+        displayUser === null ?
           null
+          :
+          <UserCard user={displayUser} />
       }
     </div>
 

@@ -1,9 +1,9 @@
 import React from 'react';
 
-function UserRow({user, setDisplayUser, onDeleteUser}) {
+function UserRow({user, setDisplayUser, displayUser, onDeleteUser}) {
 
   function handleDisplayUser() {
-    setDisplayUser(user)
+    displayUser === null ? setDisplayUser(user) : setDisplayUser(null)
   }
 
   // function deleteUser() {

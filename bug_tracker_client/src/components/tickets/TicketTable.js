@@ -15,7 +15,7 @@ function TicketTable({ ticket, users, onEditTicket, onDeleteTicket }) {
   }, [user_id]);
 
   function onDisplayUser() {
-    setDisplayUser(displayUser => !displayUser)
+    setDisplayUser(displayUser => !displayUser) 
   }
 
   function openEditTicketForm() {
