@@ -3,9 +3,8 @@ import React from 'react';
 function UserRow({user, setDisplayUser, displayUser }) {
 
   function handleDisplayUser() {
-    displayUser === null ? setDisplayUser(user) : setDisplayUser(null)
+    displayUser === user ? setDisplayUser(null) : setDisplayUser(user)
   }
-
 
   return (
     <tr key={user.id} onClick={handleDisplayUser}>
